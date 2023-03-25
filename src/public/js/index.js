@@ -18,7 +18,6 @@ Swal.fire({
     socket.emit('newUser', user)
 })
 
-
 socket.on('newUser', newUser => {
     if (user) {
         Swal.fire({
@@ -28,7 +27,6 @@ socket.on('newUser', newUser => {
         })
     }
 })
-
 
 chatBox.addEventListener('keyup', evt => {
     if(evt.key === 'Enter') {
