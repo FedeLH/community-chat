@@ -1,6 +1,8 @@
 const socket = io()
 let user
 let chatBox = document.getElementById('chatBox')
+let senChat = document.getElementById('sendChat')
+let messageLogs = document.getElementById('messageLogs')
 
 Swal.fire({
     title: "Identificate",
@@ -37,6 +39,13 @@ chatBox.addEventListener('keyup', evt => {
     }
 })
 
+senChat.addEventListener('click', _ => {
+    if(chatBox.value.trim().length > 0) {
+        socket.emit('message', {user, message: chatBox.value})
+        chatBox.value=''
+    }
+})
+
 socket.on('messageLogs', data => {
     let log = document.getElementById('messageLogs')
     let messages = ''
@@ -46,4 +55,5 @@ socket.on('messageLogs', data => {
         messages = messages + `<p class="message ${clase}">${message.user} dice: ${message.message}</p>`
     })
     log.innerHTML = messages
+    messageLogs.scrollTop = messageLogs.scrollHeight
 })
