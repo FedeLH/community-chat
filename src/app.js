@@ -4,7 +4,7 @@ import handlebars from "express-handlebars"
 import viewsRouter from "./routes/views.router.js"
 import { Server } from "socket.io"
 
-const PORT = 8080
+const PORT = process.env.PORT || 8080
 
 const app = express()
 const httpServer = app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`))

@@ -47,13 +47,12 @@ senChat.addEventListener('click', _ => {
 })
 
 socket.on('messageLogs', data => {
-    let log = document.getElementById('messageLogs')
     let messages = ''
     data.forEach(message => {
         let clase = 'receiver'
         if(message.user === user) clase = 'sender'
         messages = messages + `<p class="message ${clase}">${message.user} dice: ${message.message}</p>`
     })
-    log.innerHTML = messages
+    messageLogs.innerHTML = messages
     messageLogs.scrollTop = messageLogs.scrollHeight
 })
