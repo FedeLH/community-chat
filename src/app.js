@@ -1,8 +1,7 @@
-import express from "express"
-import __dirname from "./utils.js"
-import handlebars from "express-handlebars"
-import viewsRouter from "./routes/views.router.js"
-import { Server } from "socket.io"
+const express = require("express")
+const handlebars = require("express-handlebars")
+const viewsRouter = require("./routes/views.router.js")
+const { Server } = require("socket.io")
 
 const PORT = process.env.PORT || 8080
 
